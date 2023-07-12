@@ -21,6 +21,18 @@ static propTypes = {
       page: 1,
     };
   }
+  async update(){
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=9b90a9849e77450482d7258d751e9989&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.setState({ loading: true });
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    console.log(parsedData);
+    this.setState({
+      articles: parsedData.articles,
+      totalResults: parsedData.totalResults,
+      loading: false,
+    });
+  }
   async componentDidMount() {
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=9b90a9849e77450482d7258d751e9989&page=1&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
@@ -34,30 +46,16 @@ static propTypes = {
     });
   }
   handlePreviousClick = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=9b90a9849e77450482d7258d751e9989&page=${
-      this.state.page - 1
-    }&pageSize=${this.props.pageSize}`;
-    this.setState({ loading: true });
-    let data = await fetch(url);
-    let parsedData = await data.json();
     this.setState({
-      articles: parsedData.articles,
-      page: this.state.page - 1,
-      loading: false,
+      page: this.state.page - 1
     });
+    this.update();
   };
   handleNextClick = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=9b90a9849e77450482d7258d751e9989&page=${
-      this.state.page + 1
-    }&pageSize=${this.props.pageSize}`;
-    this.setState({ loading: true });
-    let data = await fetch(url);
-    let parsedData = await data.json();
     this.setState({
-      articles: parsedData.articles,
-      page: this.state.page + 1,
-      loading: false,
+      page: this.state.page + 1
     });
+    this.update();
   };
   render() {
     return (
@@ -79,9 +77,12 @@ static propTypes = {
                     image={
                       element.urlToImage
                         ? element.urlToImage
-                        : "https://www.freeiconspng.com/uploads/no-image-icon-4.png"
+                        :"https://st4.depositphotos.com/17828278/24401/v/450/depositphotos_244011872-stock-illustration-image-vector-symbol-missing-available.jpg"
                     }
                     newsURL={element.url}
+                    author={element.author?element.author:"Unknown"}
+                    date={element.publishedAt}
+                    source={element.source.name}
                   />
                 </div>
               );
