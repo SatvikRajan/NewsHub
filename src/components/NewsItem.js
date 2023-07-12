@@ -7,12 +7,12 @@ export class NewsItem extends Component {
         return (
             <div>
                 <div className="card">
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">{source}</span>
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">{source}</span>
                     <img src={image} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{title}...</h5>
                         <p className="card-text">{description}...</p>
-                        <p class="card-text"><small class="text-body-secondary">By {author} on {new Date(date).toGMTString()}</small></p>
+                        <p className="card-text"><small className="text-body-secondary">By {author} on {new Date(date).toGMTString()}</small></p>
                         <a rel="noreferrer" href= {newsURL} target="_blank" className="btn btn-dark">Click for article</a>
                     </div>
                 </div>
