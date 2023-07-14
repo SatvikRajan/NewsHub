@@ -7,9 +7,11 @@ export class NewsItem extends Component {
         return (
             <div>
                 <div className="card">
-                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">{source}</span>
+                    {/* <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{source}</span> */}
                     <img src={image} className="card-img-top" alt="..." />
-                    <div className="card-body">
+                    <div className="container">
+                    <li class="text-danger mt-3">Source: {source}</li></div>
+                    <div className="card-body ">
                         <h5 className="card-title">{title}...</h5>
                         <p className="card-text">{description}...</p>
                         <p className="card-text"><small className="text-body-secondary">By {author} on {new Date(date).toGMTString()}</small></p>
