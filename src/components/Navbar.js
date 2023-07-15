@@ -24,11 +24,11 @@ export class Navbar extends Component {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav">
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className="nav-link" aria-current="page" to="/general">
                                     General
                                 </Link>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <Link className="nav-link" to="/entertainment">
                                     Entertainment

@@ -3,7 +3,7 @@ import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import LoadingBar from "react-top-loading-bar";
+// import LoadingBar from "react-top-loading-bar";
 export class News extends Component {
   static defaultProps = {
     country: "in",
@@ -29,15 +29,19 @@ export class News extends Component {
     document.title = `${this.caps(this.props.category)} - NewsHub`;
   }
   async update() {
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=9b90a9849e77450482d7258d751e9989&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.props.setProgress(10);
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
+    this.props.setProgress(30);
     let parsedData = await data.json();
+    this.props.setProgress(70);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false
     })
+    this.props.setProgress(100);
   }
   fetchMoreData = async () => {
     this.setState({ page: this.state.page + 1 });
@@ -77,13 +81,13 @@ export class News extends Component {
           dataLength={this.state.articles.length}
           next={this.fetchMoreData}
           hasMore={this.state.articles.length !== this.state.totalResults}
-          loader={<Spinner />}
+          loader={this.state.loading}
         >
           <div className="container">
             <div className="row">
-              {this.state.articles.map((element) => {
+              {this.state.articles.map((element,newsUrl) => {
                 return (
-                  <div className="col-md-4 my-3" key={element.url}>
+                  <div className="col-md-4 my-3" key={newsUrl}>
                     <NewsItem
                       title={element.title ? element.title.slice(0, 50) : ""}
                       description={
@@ -102,7 +106,7 @@ export class News extends Component {
                       source={element.source.name}
                     />
                   </div>
-                );
+                )
               })}
             </div>
           </div>
