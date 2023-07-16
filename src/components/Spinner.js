@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 // import 'Spinner/css'
-export class Spinner extends Component {
-  render() {
+const Spinner = () =>{
     return (
         <div className="hourglassBackground container">
         <div className="hourglassContainer">
@@ -16,6 +15,5 @@ export class Spinner extends Component {
       </div>
     )
   }
-}
 
 export default Spinner
