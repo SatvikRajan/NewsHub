@@ -44,14 +44,14 @@ export class News extends Component {
     this.props.setProgress(100);
   }
   fetchMoreData = async () => {
-    this.setState({ page: this.state.page + 1 });
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=9b90a9849e77450482d7258d751e9989&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=9b90a9849e77450482d7258d751e9989&page=${this.state.page+1}&pageSize=${this.props.pageSize}`;
     // this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({
+      page: this.state.page + 1,
       articles: this.state.articles.concat(parsedData.articles),
-      totalResults: parsedData.totalResults,
+      // totalResults: parsedData.totalResults,
       loading: false
     })
   };
@@ -81,7 +81,7 @@ export class News extends Component {
           dataLength={this.state.articles.length}
           next={this.fetchMoreData}
           hasMore={this.state.articles.length !== this.state.totalResults}
-          loader={this.state.loading}
+          // loader={this.state.loading && <Spinner/>}
         >
           <div className="container">
             <div className="row">
