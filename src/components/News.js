@@ -16,7 +16,7 @@ const News =(props)=>{
   };
   const update = async()=> {
     props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=8`;
     setLoading(true)
     let data = await fetch(url);
     props.setProgress(30);
@@ -28,7 +28,7 @@ const News =(props)=>{
     props.setProgress(100);
   }
   const fetchMoreData = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=8`;
     // this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -54,7 +54,7 @@ const News =(props)=>{
   // };
     return (
       <>
-        <h1 className="text-center" style={{ margin: "35px 0px" }}>
+        <h1 className="text-center" style={{ color: "white",margin: "35px 0px" }}>
           NewsApp - Top {caps(props.category)} Headlines
         </h1>
         {loading && <Spinner />}
@@ -65,10 +65,11 @@ const News =(props)=>{
           // loader={this.state.loading && <Spinner/>}
         >
           <div className="container">
+          
             <div className="row">
               {articles.map((element,newsUrl) => {
                 return (
-                  <div className="col-md-4 my-3" key={newsUrl}>
+                  <div className="col-md-3 my-3" key={newsUrl}>
                     <NewsItem
                       title={element.title ? element.title.slice(0, 50) : ""}
                       description={
@@ -120,7 +121,7 @@ const News =(props)=>{
 
 News.defaultProps = {
   country: "in",
-  pageSize: 6,
+  pageSize: 8,
   category: "general",
 };
 News.propTypes = {

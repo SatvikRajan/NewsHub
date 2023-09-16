@@ -14,6 +14,7 @@ const App=()=>{
   const [progress, setProgress] = useState(0)
     return (
       <BrowserRouter>
+      <div className="my-background"></div>
         <Navbar />
         <LoadingBar
           height={3}
@@ -43,6 +44,7 @@ const App=()=>{
             element={<News setProgress={setProgress} apiKey={apiKey} key="technology" country="in" pageSize={6} category="technology" />}>
           </Route>
         </Routes>
+        
       </BrowserRouter>
     )
   }

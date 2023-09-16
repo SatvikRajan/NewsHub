@@ -1,3 +1,16 @@
+.my-background{
+  background-image:  url('../public/background1.jpg') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: fixed; /* This keeps the background fixed while content scrolls */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* Ensure the background is behind your content */
+  opacity: 0.8;
+}
 .hourglassBackground {
   position: relative;
   background-color: rgb(71, 60, 60);
