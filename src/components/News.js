@@ -38,6 +38,7 @@ const News =(props)=>{
   };
   useEffect(() => {
     update();
+    // eslint-disable-next-line
   }, [])
   // handlePreviousClick = async () => {
   //   this.setState({
