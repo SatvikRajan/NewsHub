@@ -7,7 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const News =(props)=>{
 
   const [articles, setArticles] = useState([])
-  const [loading, setLoading] = useState([true])
+  const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [totalResults, setTotalResults] = useState(0)
   // document.title = `${this.caps(props.category)} - NewsHub`;
@@ -28,7 +28,7 @@ const News =(props)=>{
     props.setProgress(100);
   }
   const fetchMoreData = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=8`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
     // this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
@@ -58,6 +58,7 @@ const News =(props)=>{
           NewsApp - Top {caps(props.category)} Headlines
         </h1>
         {loading && <Spinner />}
+        {articles.length >0 && (
         <InfiniteScroll
           dataLength={articles.length}
           next={fetchMoreData}
@@ -93,6 +94,7 @@ const News =(props)=>{
             </div>
           </div>
         </InfiniteScroll>
+        )}
         {/* <div className="container d-flex justify-content-between">
           <button
             disabled={this.state.page <= 1}
