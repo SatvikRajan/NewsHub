@@ -4,7 +4,7 @@ const NewsItem =(props)=>{
         let { title, description,image,newsURL,author,date,source} = props;
         return (
             <div>
-                <div className="card">
+                <div className="card" style={{border: "2px solid black"}}>
                     {/* <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{source}</span> */}
                     <img src={image} className="card-img-top" alt="..." />
                     <div className="container">
