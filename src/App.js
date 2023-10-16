@@ -17,34 +17,34 @@ const App=()=>{
       <div className="my-background"></div>
         <Navbar />
         <LoadingBar
-          height={3}
+          height={3}  
           color='#f11946'
           progress={progress }
         />
         <Routes>
         <Route exact path="/NewsHub"
-            element={<News setProgress={setProgress} apiKey={apiKey} key="general" country="in" pageSize={6} category="general" />}>
+            element={<News setProgress={setProgress} apiKey={apiKey} key="top" country="in" size={6} category="top" language="en"/>}>
           </Route>
         <Route exact path="/"
-            element={<News setProgress={setProgress} apiKey={apiKey} key="general" country="in" pageSize={6} category="general" />}>
+            element={<News setProgress={setProgress} apiKey={apiKey} key="top" country="in" size={6} category="top" language="en"/>}>
           </Route>
         <Route exact path="/business"
-            element={<News setProgress={setProgress} apiKey={apiKey} key="business" country="in" pageSize={6} category="business" />}>
+            element={<News setProgress={setProgress} apiKey={apiKey} key="business" country="in" size={6} category="business" language="en"/>}>
           </Route>
           <Route exact path="/entertainment"
-            element={<News setProgress={setProgress} apiKey={apiKey} key="entertainment" country="in" pageSize={6} category="entertainment" />}>
+            element={<News setProgress={setProgress} apiKey={apiKey} key="entertainment" country="in" size={6} category="entertainment" language="en"/>}>
           </Route>
           <Route exact path="/health"
-            element={<News setProgress={setProgress} apiKey={apiKey} key="health" country="in" pageSize={6} category="health" />}>
+            element={<News setProgress={setProgress} apiKey={apiKey} key="health" country="in" size={6} category="health" language="en" />}>
           </Route>
           <Route exact path="/science"
-            element={<News setProgress={setProgress} apiKey={apiKey} key="science" country="in" pageSize={6} category="science" />}>
+            element={<News setProgress={setProgress} apiKey={apiKey} key="science" country="in" size={6} category="science" language="en"/>}>
           </Route>
           <Route exact path="/sports"
-            element={<News setProgress={setProgress} apiKey={apiKey} key="sports" country="in" pageSize={6} category="sports" />}>
+            element={<News setProgress={setProgress} apiKey={apiKey} key="sports" country="in" size={6} category="sports" language="en"/>}>
           </Route>
           <Route exact path="/technology"
-            element={<News setProgress={setProgress} apiKey={apiKey} key="technology" country="in" pageSize={6} category="technology" />}>
+            element={<News setProgress={setProgress} apiKey={apiKey} key="technology" country="in" size={6} category="technology" language="en"/>}>
           </Route>
         </Routes>
         
